@@ -1,0 +1,17 @@
+.lock-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 25%;
+	padding: 5%;
+	margin-top: 25%; /* 25 % from the top + 25% height = 50% */
+}
+
+.lock-image {
+	height: auto;
+	width: 25%;
+}
+
+.filter-slate {
+	filter: invert(39%) sepia(23%) saturate(538%) hue-rotate(182deg) brightness(89%) contrast(92%);
+}

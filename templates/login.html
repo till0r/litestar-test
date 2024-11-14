@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block header %}{% endblock %}
+{% block main %}
+<main class="container">
+    <div class="lock-container">
+   <img 
+                src="/static/svg/lock-outline.svg" 
+                alt="App locked"
+                class="filter-slate lock-image" 
+                />
+    </div>
+    <article>
+      <form hx-boost="true" method="post" url="/login">
+        <fieldset role="group">
+          <input 
+                    name="username" 
+                    type="text" 
+                    placeholder="Username" 
+                    value="{{ username|default('') }}" 
+                    {% if error %}aria-invalid="true" aria-describedby="login-helper"{% endif %}
+                    required 
+                    autofocus 
+                />
+          <input 
+                    name="password" 
+                    type="password" 
+                    placeholder="Password" 
+                    value="{{ password|default('') }}" 
+                    {% if error %}aria-invalid="true" aria-describedby="login-helper"{% endif %}
+                    required 
+                />
+          <input type="submit" value="Log in" />
+        </fieldset>
+        {% if error %}
+            {# NOTE: pico-color-red-500 is used here, because it has been used for invalid texts in picocss and groups do not support invalid helper texts yet as of pico 2.0.6 #}
+            <small class="pico-color-red-500" id="login-helper">
+                Invalid credentials! Please check username and password.
+            </small>
+        {% endif %}
+      </form>
+    </article>
+</main>
+{% endblock %}

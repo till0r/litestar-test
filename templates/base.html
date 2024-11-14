@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.png">
+    <title>{% block title %}{% endblock %}</title>
+        <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.sand.min.css"
+>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+>
+        <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% block header %}
+    <header class="container">
+        <nav>
+            <ul>{% block page_header_section %}{% endblock %}</ul>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/logout" hx-post="/logout" hx-confirm="Are you sure you want to logout?">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% endblock %}
+    {% block main %}
+    <main class="container-fluid">
+        {% block content %}{% endblock %}
+    </main>
+    {% endblock %}
+</body>
+</html>

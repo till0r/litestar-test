@@ -3,6 +3,7 @@ from functools import lru_cache
 
 from dotenv import load_dotenv
 from litestar import Litestar
+from litestar.type import EmptyType
 from litestar.contrib.jinja import JinjaTemplateEngine
 from litestar.contrib.sqlalchemy.plugins import SQLAlchemyInitPlugin
 from litestar.exceptions import NotAuthorizedException
@@ -13,7 +14,6 @@ from litestar.middleware.session.server_side import (
 from litestar.security.session_auth import SessionAuth
 from litestar.static_files import create_static_files_router
 from litestar.template.config import TemplateConfig
-
 from app.config import sqlalchemy_config
 from app.models.user import User
 from app.routes.auth import (
@@ -59,6 +59,7 @@ def create_app() -> Litestar:
         ],
         middleware=[get_session_auth().middleware],
         template_config=template_config,
+        signature_types=[EmptyType],
         exception_handlers={NotAuthorizedException: auth_redirect_handler},
         debug=debug,  # Pass the debug flag
         plugins=[SQLAlchemyInitPlugin(config=sqlalchemy_config)],

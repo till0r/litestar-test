@@ -19,7 +19,6 @@ from app.routes.auth import (
     auth_redirect_handler,
     retrieve_user_handler,
 )
-from app.routes.home import home
 
 
 @lru_cache

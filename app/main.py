@@ -3,7 +3,7 @@ from functools import lru_cache
 
 from dotenv import load_dotenv
 from litestar import Litestar
-from litestar.type import EmptyType
+from litestar.types import EmptyType
 from litestar.contrib.jinja import JinjaTemplateEngine
 from litestar.contrib.sqlalchemy.plugins import SQLAlchemyInitPlugin
 from litestar.exceptions import NotAuthorizedException

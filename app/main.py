@@ -12,15 +12,11 @@ from litestar.middleware.session.server_side import (
     ServerSideSessionConfig,
 )
 from litestar.security.session_auth import SessionAuth
-from litestar.static_files import create_static_files_router
 from litestar.template.config import TemplateConfig
 from app.config import sqlalchemy_config
 from app.models.user import User
 from app.routes.auth import (
     auth_redirect_handler,
-    get_login_handler,
-    post_login_handler,
-    post_logout_handler,
     retrieve_user_handler,
 )
 from app.routes.home import home
@@ -51,11 +47,11 @@ def create_app() -> Litestar:
     # Create the Litestar app instance
     app = Litestar(
         route_handlers=[
-            home,
-            get_login_handler,
-            post_login_handler,
-            post_logout_handler,
-            create_static_files_router(path="static", directories=["static"]),
+#            home,
+#            get_login_handler,
+#            post_login_handler,
+#            post_logout_handler,
+#            create_static_files_router(path="static", directories=["static"]),
         ],
         middleware=[get_session_auth().middleware],
         template_config=template_config,
